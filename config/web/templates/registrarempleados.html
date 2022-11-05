@@ -22,19 +22,15 @@
     <br><br>
     <main>
         <section>
-            <div class="banner">
-                <img src="../static/img/elherbario_logo.svg" alt="">
-            </div>
-        </section>
-        <section>
             <div class="container my-5">
                 <div class="row justify-content-center">
                     <div class="col-12 col-md-5">
-                        <div class="banner">
-                            <form>
+                        <div class="bann">
+                            <form method="POST">
                                 <img src="../static/img/elherbario_logo.svg" alt="">
                                 {{formEmpleados}}
-                                <button type="button" class="btn btn-success w-100">Enviar</button>
+                                {%csrf_token%}
+                                <button type="submit" class="btn btn-success w-100">Enviar</button>
                             </form>
                         </div>
                     </div>

@@ -24,13 +24,14 @@
         <div class="container mt-5">
             <div class="row">
                 <div class="col-12 col-md-5">
-                    <img src="../static/img/Vegetales.jpg" alt="vegetales" class="img-fluid w-100">
+                    <img src="../static/img/plato3.jpg" alt="vegetales" class="img-fluid w-100 h-50">
                 </div>
                 <div class="col-12 col-md-7">
                     <h2>Registro de platos</h2>
-                    <form>
+                    <form method="POST">
                         {{formulario}}
-                        <button type="button" class="btn btn-success w-100">Enviar</button>
+                        {%csrf_token%}
+                        <button type="submit" class="btn btn-success w-100">Enviar</button>
                     </form>
                 </div>
             </div>
