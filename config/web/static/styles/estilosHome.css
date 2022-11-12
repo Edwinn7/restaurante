@@ -19,7 +19,7 @@
     z-index: -1;
 }
 .bann {
-    background-image: url('../img/plato.png');
+    background-image: url('../img/huerta.jpeg');
     background-position: top center;
     background-size: cover;
     background-attachment: fixed;
@@ -39,7 +39,7 @@
     z-index: -1;
 }
 .menu{
-    background-color: #136129;
+    background-color: #393534;
 }
 
 .zoom{
