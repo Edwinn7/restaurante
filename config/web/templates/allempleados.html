@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
   <link rel="stylesheet" href="./css/styles.css">
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-  <title>Nuestros platos</title>
+  <title>Nuestro empleados</title>
 </head>
 
 <body>
@@ -32,39 +32,44 @@
     </section>
     <br><br><br>
     <section>
-      <div class="container">
-        <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="4000">
-              <img src="../static/img/slider-3.jpg" class="d-block w-100" alt="...">
+        <div class="container menu" style="background-color: #393534;">
+            <div class="row justify-content-center p-5">
+                <div class="col-12 ">
+                    <h2 class="mb-3 text-center text-withe" style="color: #bba45b;">Nuestros empleados</h2>
+                </div>
+                <div class="col-12 col-md-3">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/restaurantesbdo.appspot.com/o/empl3.jpg?alt=media&token=e43ddfcc-8907-47e4-9bce-228560e00374" alt="" class="img-fluid w-100 wow animate__animated animate__slideInLeft animate__slow zoom">
+                </div>
+                <div class="col-12 col-md-3 ">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/restaurantesbdo.appspot.com/o/empl.jpg?alt=media&token=4b84913a-feb0-46d2-95a4-3a29a17f2d40" alt="" class="img-fluid w-100 zoom">
+                </div>
+                <div class="col-13 col-md-3 ">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/restaurantesbdo.appspot.com/o/empl2.jpg?alt=media&token=ddaa9c0b-07c1-4555-a9ca-e5ff6d986825" alt="" class="img-fluid w-100 wow animate__animated animate__slideInRight animate__slow zoom">
+                </div>
             </div>
-            <div class="carousel-item" data-bs-interval="4000">
-              <img src="../static/img/chorizo.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item" data-bs-interval="4000">
-              <img src="../static/img/IMG_6404.jpg" class="d-block w-100" alt="...">
-            </div>
-          </div>
         </div>
-      </div>
-      </div>
-    </section>
+</section>
   </main>
   <br><br><br>
   <section>
     <div class="container">
       <div class="row">
-        {% for plato in platos %}
-        <div class="card mb-3">
-          <img src={{plato.imagen}} class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Nombre: {{plato.nombre}}</h5>
-            <p class="card-text">Descripcion: {{plato.descripcion}}</p>
-            <p class="card-text"><small class="text-muted">Tipo de plato: {{plato.tipo}}</small></p>
-            <p class="card-text"><small class="text-muted">Precio: {{plato.precio}} COP</small></p>
-          </div>
-        </div>
-        {% endfor %}
+        {% for empleado in empleados %}
+        <div class="card mb-3" style="max-width: 540px;">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="{{empleado.foto}}" class="img-fluid rounded-start" alt="Foto empleado">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{empleado.nombre}}</h5>
+                  <h5 class="card-title">{{empleado.apellidos}}</h5>
+                  <p class="card-text">Cago: {{empleado.cargo}}</p>
+                  <p class="card-text">Contacto: {{empleado.contacto}}</p>
+                </div>
+              </div>
+            </div>
+          </div>        {% endfor %}
       </div>
   </section>
 

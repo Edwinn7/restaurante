@@ -10,6 +10,13 @@ from web.models import Empleados
 def Home(request):
     return render(request,'home.html')
 
+def todosplatos(request):
+    platosConsultados=Platos.objects.all()
+    data={
+        'platos':platosConsultados
+    }
+    return render(request,'allplatos.html',data)
+
 def PlatosVista(request):
     #rutina para la consulta de platos
     platosConsultados=Platos.objects.all()
@@ -50,10 +57,12 @@ def PlatosVista(request):
     return render(request,'menuplatos.html',data)
 
 def EmpleadosVista(request):
+    empleadosConsultados=Empleados.objects.all()
     formEmpleados=FormularioEmpleados()
     form2={
         'formEmpleados':formEmpleados,
-        'bandera':False
+        'bandera':False,
+        'empleados':empleadosConsultados
     }
          #recibimos los datos del form
     if request.method=="POST":
@@ -80,3 +89,10 @@ def EmpleadosVista(request):
 
 
     return render(request,'registrarempleados.html',form2)
+
+def todosempleados(request):
+    empleadosConsultados=Empleados.objects.all()
+    form2={
+        'empleados':empleadosConsultados
+    }
+    return render(request,'allempleados.html',form2)

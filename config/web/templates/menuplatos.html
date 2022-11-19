@@ -52,29 +52,8 @@
             </div>
         </div>
     </main>
-    <section>
-        <div class="container">
-            <div class="row row-cols-1 row-cols-md-4">
-                {% for plato in platos %}
-                <!-- <h1>{{plato.nombre}}</h1> -->
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src={{plato.imagen}} class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">{{plato.nombre}}</h5>
-                          <p class="card-text">{{plato.descripcion}}</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                {% endfor %}
-                </div>
-            </div>
-    </section>
+    <br><br><br><br>
+    
     <footer class="bg-dark text-center text-white">
         {% include './shared/footer.html' %}
     </footer>
