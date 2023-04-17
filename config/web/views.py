@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from web.formularios.formularioPlatos import FormularioPlatos
 from web.formularios.formularioEmpleado import FormularioEmpleados
+from web.formularios.formularioReservas import FormularioReservas
 from web.models import Platos
 from web.models import Empleados
+from web.models import Reservas
 
 # Create your views here.
 # todas las vistas son funciones de python
@@ -40,7 +42,7 @@ def PlatosVista(request):
             platoNuevo=Platos(
                 nombre=datosLimpios["nombre"],
                 descripcion=datosLimpios["descripcion"],
-                imagen=datosLimpios["foto"],
+                imagen=datosLimpios["imagen"],
                 precio=datosLimpios["precio"],
                 tipo=datosLimpios["tipo"]
             )
@@ -96,3 +98,48 @@ def todosempleados(request):
         'empleados':empleadosConsultados
     }
     return render(request,'allempleados.html',form2)
+
+def ReservasVista(request):
+    # rutina para la consulta de reservas
+    reservasConsultadas = Reservas.objects.all()
+    print(reservasConsultadas)
+    
+    # esta vista va a utilizar un formulario de django
+    # entonces se debe crear un objeto de la clase FormularioReservas()
+    formulario = FormularioReservas()
+
+    # creamos un diccionario para enviar el formulario al html(template)
+    data = {
+        'formularioReservas': formulario,
+        'bandera': False,
+        'reservasConsultadas': reservasConsultadas
+    }
+
+    # recibimos los datos del formulario
+    if request.method == "POST":
+        datosFormulario = FormularioReservas(request.POST)
+        if datosFormulario.is_valid():
+            datosLimpios = datosFormulario.cleaned_data
+            print(datosLimpios)
+
+            # construir un objeto/diccionario de envío de datos hacia la Base de datos
+            reservaNueva = Reservas(
+                nombre_cliente=datosFormulario.cleaned_data['nombre_cliente'],
+                fecha=datosFormulario.cleaned_data['fecha'],
+                hora=datosFormulario.cleaned_data['hora'],
+                numero_personas=datosFormulario.cleaned_data['numero_personas'],
+                telefono_contacto=datosFormulario.cleaned_data['telefono_contacto'],
+                email_contacto=datosFormulario.cleaned_data['email_contacto']
+            )
+
+            # intentar llevar los datos recogidos a la base de datos
+            try:
+                reservaNueva.save()
+                data["bandera"] = True
+                print("Exito guardando...")
+
+            except Exception as error:
+                print("Upsss", error)
+                data["bandera"] = False
+
+    return render(request, 'reservas.html', data)

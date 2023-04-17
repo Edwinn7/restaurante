@@ -35,39 +35,17 @@
       <div class="container">
         <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
-            <div class="carousel-item active" data-bs-interval="4000">
-              <img src="../static/img/slider-3.jpg" class="d-block w-100" alt="...">
+            {% for plato in platos %}
+            <div class="carousel-item {% if index == 0 %}active{% endif %}" data-bs-interval="4000">
+              <img src="{{ plato.imagen }}" class="d-block w-100" alt="Foto del plato {{ plato.nombre }}">
             </div>
-            <div class="carousel-item" data-bs-interval="4000">
-              <img src="../static/img/chorizo.jpg" class="d-block w-100" alt="...">
-            </div>
-            <div class="carousel-item" data-bs-interval="4000">
-              <img src="../static/img/IMG_6404.jpg" class="d-block w-100" alt="...">
-            </div>
+            {% endfor %}
           </div>
         </div>
       </div>
-      </div>
-    </section>
+    </section>    
   </main>
   <br><br><br>
-  <section>
-    <div class="container">
-      <div class="row">
-        {% for plato in platos %}
-        <div class="card mb-3">
-          <img src={{plato.imagen}} class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Nombre: {{plato.nombre}}</h5>
-            <p class="card-text">Descripcion: {{plato.descripcion}}</p>
-            <p class="card-text"><small class="text-muted">Tipo de plato: {{plato.tipo}}</small></p>
-            <p class="card-text"><small class="text-muted">Precio: {{plato.precio}} COP</small></p>
-          </div>
-        </div>
-        {% endfor %}
-      </div>
-  </section>
-
   <footer class="bg-dark text-center text-white">
     {% include './shared/footer.html' %}
   </footer>

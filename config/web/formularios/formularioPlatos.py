@@ -6,7 +6,7 @@ class FormularioPlatos(forms.Form):
     PLATOS=(
         (1, 'Entradas'),
         (2, 'Plato fuerte'),
-        (3, 'Postre')
+        (3, 'Postre')   
     )
     nombre=forms.CharField(
         required=True,

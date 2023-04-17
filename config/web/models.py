@@ -8,6 +8,7 @@
 from django.db import models
 
 
+
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=150)
 
@@ -144,3 +145,15 @@ class Empleados(models.Model):
     class Meta:
         managed = False
         db_table = 'empleados'
+        
+class Reservas(models.Model):
+    nombre_cliente = models.CharField(max_length=50)
+    fecha = models.DateField()
+    hora = models.TimeField()
+    numero_personas = models.IntegerField()
+    telefono_contacto = models.CharField(max_length=20)
+    email_contacto = models.EmailField()
+
+    class Meta:
+        managed = False
+        db_table = 'reservas'
